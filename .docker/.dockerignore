@@ -1,0 +1,16 @@
+.virtual_documents
+.vscode
+.history
+workspace
+notebooks
+.root
+.workspace
+data
+refs
+tmp
+_tmp_
+logs
+outputs
+runs
+
+.env*
