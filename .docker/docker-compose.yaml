@@ -1,10 +1,14 @@
 version: "3"
 
 services:
+  # Defines a service named "workspace"
   workspace:
     build:
+      # Sets the build context to the current directory
       context: .
+      # Specifies the Dockerfile to use for the build
       dockerfile: .docker/Dockerfile
+      # Specifies build-time variables (ARGs)
       args:
         ARG_BUILD_FROM: $BUILD_FROM
         ARG_USERNAME: $USERNAME
@@ -17,19 +21,26 @@ services:
         ARG_SDW_CLONE_DIR: $SDW_CLONE_DIR
         ARG_SDW_GITHUB_BRANCH: $SDW_GITHUB_BRANCH
         ARG_SDW_SERVER_NAME: $SDW_SERVER_NAME
+    # Sets the image name for the built image
     image: $IMAGE_NAME
+    # Sets the hostname of the container
     hostname: $CONTAINER_HOSTNAME
     command:
+      # Specifies the command to be executed when the container is run
       - bash
       - $CONTAINER_WORKSPACE_ROOT/scripts/webui.sh
     ulimits:
+      # Sets the stack size and memory lock limits
       stack: 67108864
       memlock: -1
+    # Allows the container to use the host's IPC namespace
     ipc: host
     ports:
+      # Maps the container's SSH and Gradio ports to the host's ports
       - "$HOST_SSH_PORT:$SSH_PORT"
       - "$HOST_GRADIO_PORT:$GRADIO_PORT"
     volumes:
+      # Maps directories from the host to the container
       - "$HOME/.cache/huggingface:/home/$USERNAME/.cache/huggingface"
       - "$HOME/.huggingface:/home/$USERNAME/.huggingface"
       - "$WORKSPACE_ROOT:$CONTAINER_WORKSPACE_ROOT"
@@ -38,10 +49,12 @@ services:
       resources:
         reservations:
           devices:
+            # Reserves the specified GPU for the container
             - driver: nvidia
               device_ids: ["${CUDA_DEVICE_ID}"]
               capabilities: [gpu]
 networks:
   default:
+    # Sets the name of the default network and makes it external
     name: $DOCKER_NETWORK_NAME
     external: true
