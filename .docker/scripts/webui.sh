@@ -4,7 +4,7 @@
 #########################################################
 
 # Install directory without trailing slash
-install_dir=${SDW_INSTALL_ROOT:-"/workspace/projects"}
+install_dir=${SDW_WORKSPACE_ROOT:-"/app"}
 clone_dir=${SDW_CLONE_DIR:-"stable-diffusion-webui"}
 # Commandline arguments for webui.py, for example: export COMMANDLINE_ARGS="--medvram --opt-split-attention"
 export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --xformers"
@@ -110,7 +110,7 @@ printf "\n%s\n" "${delimiter}"
 printf "Check out %s branch" "${SDW_GITHUB_BRANCH}"
 printf "\n%s\n" "${delimiter}"
 "${GIT}" fetch --all
-"${GIT}" checkout -B "${SDW_GITHUB_BRANCH}" || {
+"${GIT}" checkout "${SDW_GITHUB_BRANCH}" || {
     printf "\e[1m\e[31mERROR: Can't checkout %s branch, aborting...\e[0m" "${SDW_GITHUB_BRANCH}"
     exit 1
 }
