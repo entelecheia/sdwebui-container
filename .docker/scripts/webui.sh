@@ -118,7 +118,7 @@ printf "\n%s\n" "${delimiter}"
 # Copy webui.py to the stable-diffusion directory
 printf "\n%s\n" "${delimiter}"
 printf "Copy webui.py to the stable-diffusion-webui directory"
-cp -rf "${WORKSPACE_ROOT}/scripts/src/webui.py" "${install_dir}"/"${clone_dir}/" || {
+cp -rf "${install_dir}/scripts/src/webui.py" "${install_dir}"/"${clone_dir}/" || {
     printf "\e[1m\e[31mERROR: Can't copy webui.py to the stable-diffusion-webui directory, aborting...\e[0m"
     exit 1
 }
