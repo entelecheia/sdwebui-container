@@ -2,7 +2,7 @@ version: "3"
 
 services:
   # Defines a service named "workspace"
-  workspace:
+  app:
     build:
       # Sets the build context to the current directory
       context: .
@@ -14,10 +14,9 @@ services:
         ARG_USERNAME: $USERNAME
         ARG_USER_UID: $USER_UID
         ARG_USER_GID: $USER_GID
-        ARG_WORKSPACE_ROOT: $CONTAINER_WORKSPACE_ROOT
         ARG_SDW_GITHUB_USERNAME: $SDW_GITHUB_USERNAME
         ARG_SDW_GITHUB_REPO: $SDW_GITHUB_REPO
-        ARG_SDW_INSTALL_ROOT: $SDW_INSTALL_ROOT
+        ARG_SDW_WORKSPACE_ROOT: $SDW_WORKSPACE_ROOT
         ARG_SDW_CLONE_DIR: $SDW_CLONE_DIR
         ARG_SDW_GITHUB_BRANCH: $SDW_GITHUB_BRANCH
         ARG_SDW_SERVER_NAME: $SDW_SERVER_NAME
@@ -28,7 +27,13 @@ services:
     command:
       # Specifies the command to be executed when the container is run
       - bash
-      - $CONTAINER_WORKSPACE_ROOT/scripts/webui.sh
+      - $SDW_WORKSPACE_ROOT/scripts/webui.sh
+    # set the environment variables
+    environment:
+      SDW_GITHUB_USERNAME: $SDW_GITHUB_USERNAME
+      SDW_GITHUB_REPO: $SDW_GITHUB_REPO
+      SDW_GITHUB_BRANCH: $SDW_GITHUB_BRANCH
+      SDW_SERVER_NAME: $SDW_SERVER_NAME
     ulimits:
       # Sets the stack size and memory lock limits
       stack: 67108864
@@ -41,10 +46,10 @@ services:
       - "$HOST_GRADIO_PORT:$GRADIO_PORT"
     volumes:
       # Maps directories from the host to the container
-      - "$HOME/.cache/huggingface:/home/$USERNAME/.cache/huggingface"
-      - "$HOME/.huggingface:/home/$USERNAME/.huggingface"
-      - "$WORKSPACE_ROOT:$CONTAINER_WORKSPACE_ROOT"
-      - "$PWD/.docker/scripts:$CONTAINER_WORKSPACE_ROOT/scripts"
+      - "$HOST_PROJECT_ROOT/$SDW_GITHUB_REPO:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR"
+      - "$PWD/workspace/models:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/models"
+      - "$PWD/workspace:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/workspace"
+      - "$PWD/.docker/scripts:$SDW_WORKSPACE_ROOT/scripts"
     deploy:
       resources:
         reservations:
