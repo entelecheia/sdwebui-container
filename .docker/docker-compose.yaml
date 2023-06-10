@@ -47,8 +47,16 @@ services:
     volumes:
       # Maps directories from the host to the container
       - "$HOST_PROJECT_ROOT/$SDW_GITHUB_REPO:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR"
+      - "$PWD/workspace/config_states:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/config_states"
+      - "$PWD/workspace/embeddings:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/embeddings"
+      - "$PWD/workspace/extensions:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/extensions"
+      - "$PWD/workspace/interrogate:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/interrogate"
+      - "$PWD/workspace/localizations:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/localizations"
+      - "$PWD/workspace/log:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/log"
       - "$PWD/workspace/models:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/models"
-      - "$PWD/workspace:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/workspace"
+      - "$PWD/workspace/outputs:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/outputs"
+      - "$PWD/workspace/repositories:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/repositories"
+      - "$PWD/workspace/textual_inversion:$SDW_WORKSPACE_ROOT/$SDW_CLONE_DIR/textual_inversion"
       - "$PWD/.docker/scripts:$SDW_WORKSPACE_ROOT/scripts"
     deploy:
       resources:
