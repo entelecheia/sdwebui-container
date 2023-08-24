@@ -1,5 +1,13 @@
 <!--next-version-placeholder-->
 
+## v0.1.1 (2023-08-24)
+
+### Fix
+
+* **docker:** Update launch script arguments and remove copying webui.py ([`c63d7b5`](https://github.com/entelecheia/sdwebui-container/commit/c63d7b57c05064f2632bd7482813e330cb016877))
+* **Dockerfile.app:** Clone stable-diffusion-webui from GitHub ([`290859a`](https://github.com/entelecheia/sdwebui-container/commit/290859a3e41b9429f317128fd8ba377d71ffa873))
+* **docker:** Add conditional logic to git checkout process ([`6e3243a`](https://github.com/entelecheia/sdwebui-container/commit/6e3243a42954df436d4cdb8610c00879b6042383))
+
 ## v0.1.0 (2023-08-24)
 
 ### Feature
