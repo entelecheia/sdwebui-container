@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; do NOT edit manually
-_commit: v0.11.0
+_commit: v0.11.1
 _src_path: gh:entelecheia/hyperfast-docker-template
 app_clone_dirname: stable-diffusion-webui
 app_install_root: /workspace/projects
@@ -34,6 +34,7 @@ jupyter_host_port: 18888
 jupyter_port: 8585
 jupyter_token: __juypter_token_(change_me)__
 launch_scripts: launch.sh
+main_branch: main
 project_description: This repository provides a container to install and run Stable-Diffusion-WebUI.
     It uses the PyTorch container as a base image and includes several additional
     packages necessary for Stable-Diffusion-WebUI.
