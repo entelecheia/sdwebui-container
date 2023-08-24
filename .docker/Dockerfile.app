@@ -62,5 +62,8 @@ ENV APP_CLONE_DIRNAME $ARG_APP_CLONE_DIRNAME
 ENV APP_SOURCE_BRANCH $ARG_APP_SOURCE_BRANCH
 ENV APP_SERVER_NAME $ARG_APP_SERVER_NAME
 
+# Clones the stable-diffusion-webui repository from GitHub
+RUN git clone "https://github.com/$ARG_APP_SOURCE_REPO.git" $ARG_APP_INSTALL_ROOT/$ARG_APP_CLONE_DIRNAME
+
 # Specifies the command that will be executed when the container is run
 CMD ["bash"]
