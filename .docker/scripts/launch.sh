@@ -14,7 +14,8 @@ source_repo=${APP_SOURCE_REPO:-"AUTOMATIC1111/stable-diffusion-webui"}
 source_branch=${APP_SOURCE_BRANCH:-"master"}
 
 # Commandline arguments for webui.py, for example: export COMMANDLINE_ARGS="--medvram --opt-split-attention"
-export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --xformers --data-dir ./workspace"
+export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --data-dir ./workspace"
+# export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --xformers --data-dir ./workspace"
 # python3 executable
 python_cmd="python3"
 # git executable
@@ -113,22 +114,21 @@ cd "${install_dir}"/"${clone_dir}"/ || {
     printf "\e[1m\e[31mERROR: Can't cd to %s/%s/, aborting...\e[0m" "${install_dir}" "${clone_dir}"
     exit 1
 }
-printf "\n%s\n" "${delimiter}"
-printf "Check out %s branch" "${source_branch}"
-printf "\n%s\n" "${delimiter}"
-"${GIT}" fetch --all
-"${GIT}" checkout "${source_branch}" || {
-    printf "\e[1m\e[31mERROR: Can't checkout %s branch, aborting...\e[0m" "${source_branch}"
-    exit 1
-}
-
-# Copy webui.py to the stable-diffusion directory
-printf "\n%s\n" "${delimiter}"
-printf "Copy webui.py to the stable-diffusion-webui directory"
-cp -rf "${install_dir}/scripts/webui.py" "${install_dir}"/"${clone_dir}/" || {
-    printf "\e[1m\e[31mERROR: Can't copy webui.py to the stable-diffusion-webui directory, aborting...\e[0m"
-    exit 1
-}
+if [[ "${source_branch} " == " master " ]] || [[ "${source_branch} " == " main " ]]; then
+    printf "\n%s\n" "${delimiter}"
+    printf "Pull latest changes from %s branch" "${source_branch}"
+    printf "\n%s\n" "${delimiter}"
+    "${GIT}" pull
+else
+    printf "\n%s\n" "${delimiter}"
+    printf "Fetch all branches"
+    printf "\n%s\n" "${delimiter}"
+    "${GIT}" fetch --all
+    "${GIT}" checkout "${source_branch}" || {
+        printf "\e[1m\e[31mERROR: Can't checkout %s branch, aborting...\e[0m" "${source_branch}"
+        exit 1
+    }
+fi
 
 # Try using TCMalloc on Linux
 prepare_tcmalloc() {
