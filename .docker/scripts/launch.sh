@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+echo "Starting docker container..."
+
+# start ssh server
+sudo service ssh start
 #########################################################
 # Uncomment and change the variables below to your need:#
 #########################################################
