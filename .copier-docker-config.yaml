@@ -1,0 +1,49 @@
+# Changes here will be overwritten by Copier; do NOT edit manually
+_commit: v0.11.0
+_src_path: gh:entelecheia/hyperfast-docker-template
+app_clone_dirname: stable-diffusion-webui
+app_install_root: /workspace/projects
+app_server_name: sdwebui
+app_source_branch: master
+app_source_repo: AUTOMATIC1111/stable-diffusion-webui
+author: Young Joon Lee
+clone_source_code: true
+container_workspace_root: /workspace
+copy_scripts_dir: true
+cuda_device_id: '0'
+docker_app_image_variant_name: app
+docker_apt_packages: fontconfig fonts-nanum google-perftools libcairo2-dev imagemagick
+    ffmpeg
+docker_base_build_from: pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
+docker_base_image_variant_name: base
+docker_container_uid: 9001
+docker_container_username: app
+docker_project_name: sdwebui
+docker_registry: ghcr.io
+docker_run_command: bash
+docker_timezone: Asia/Seoul
+docker_username: entelecheia
+email: entelecheia@hotmail.com
+enable_nvidia_gpu: true
+friendly_name: Stable Diffusion WebUI Container
+github_repo_name: sdwebui-container
+github_username: entelecheia
+install_dotfiles: false
+install_pip_requirements: true
+jupyter_host_port: 18888
+jupyter_port: 8585
+jupyter_token: __juypter_token_(change_me)__
+launch_scripts: launch.sh
+project_description: This repository provides a container to install and run Stable-Diffusion-WebUI.
+    It uses the PyTorch container as a base image and includes several additional
+    packages necessary for Stable-Diffusion-WebUI.
+project_license: MIT
+project_short_description: A containerized setup for Stable-Diffusion-WebUI.
+ssh_host_port: 2822
+ssh_port: 22
+start_jupyter: false
+start_ssh_service: true
+use_deploy_workflows: true
+web_service_host_port: 17860
+web_service_port: 7860
+

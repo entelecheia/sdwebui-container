@@ -1,0 +1,6 @@
+.copierignore
+.tasks-extra.toml
+CHANGELOG.md
+LICENSE
+pyproject.toml
+.github/workflows/release.yaml
