@@ -4,3 +4,8 @@ CHANGELOG.md
 LICENSE
 pyproject.toml
 .github/workflows/release.yaml
+.docker/Dockerfile.app
+.docker/scripts/launch.sh
+.docker/scripts/requirements.txt
+.docker/docker.version
+.docker/docker-compose.app.yaml
