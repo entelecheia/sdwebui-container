@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sdwebui"
-version = "0.1.1"
+version = "0.1.2"
 description = "A containerized setup for Stable-Diffusion-WebUI."
 authors = ["Young Joon Lee <entelecheia@hotmail.com>"]
 license = "MIT"

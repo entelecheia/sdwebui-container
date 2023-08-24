@@ -1,5 +1,12 @@
 <!--next-version-placeholder-->
 
+## v0.1.2 (2023-08-24)
+
+### Fix
+
+* **launch.sh:** Fix permissions ([`d2738fd`](https://github.com/entelecheia/sdwebui-container/commit/d2738fd5fc70ed2bc12fdaaada5480212faf955a))
+* **readme:** Update default SSH port, update license and contribution urls ([`a419796`](https://github.com/entelecheia/sdwebui-container/commit/a4197963ecf07b974c20913f4dca1ba8095e75a2))
+
 ## v0.1.1 (2023-08-24)
 
 ### Fix
