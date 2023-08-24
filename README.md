@@ -50,7 +50,7 @@ This repository provides a container to install and run Stable-Diffusion-WebUI. 
 
 After starting the container, you can access the application at `localhost:<APP_HOST_WEB_SVC_PORT>`. By default, the port is set to `17860`.
 
-You can also SSH into the container using the SSH port specified in `APP_HOST_SSH_PORT`. By default, the port is set to `17860`.
+You can also SSH into the container using the SSH port specified in `APP_HOST_SSH_PORT`. By default, the port is set to `2822`.
 
 ## Volumes
 
@@ -88,11 +88,11 @@ Contributions are welcome! Please see the [contributing guidelines] for more inf
 This project is released under the [MIT License][license-url].
 <!-- Links: -->
 [license-image]: https://img.shields.io/github/license/entelecheia/sdwebui-container
-[license-url]: https://github.com/entelecheia/sdwebui-container/blob//LICENSE
+[license-url]: https://github.com/entelecheia/sdwebui-container/blob/main/LICENSE
 [version-image]: https://img.shields.io/github/v/release/entelecheia/sdwebui-container?sort=semver
 [release-date-image]: https://img.shields.io/github/release-date/entelecheia/sdwebui-container
 [release-url]: https://github.com/entelecheia/sdwebui-container/releases
 [repo-url]: https://github.com/entelecheia/sdwebui-container
-[changelog]: https://github.com/entelecheia/sdwebui-container/blob//CHANGELOG.md
-[contributing guidelines]: https://github.com/entelecheia/sdwebui-container/blob//CONTRIBUTING.md
+[changelog]: https://github.com/entelecheia/sdwebui-container/blob/main/CHANGELOG.md
+[contributing guidelines]: https://github.com/entelecheia/sdwebui-container/blob/main/CONTRIBUTING.md
 <!-- Links: -->
