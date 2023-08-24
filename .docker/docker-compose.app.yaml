@@ -73,7 +73,7 @@ services:
       - "$PWD/workspace/log:$APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/log"
       - "$PWD/workspace/models:$APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/models"
       - "$PWD/workspace/outputs:$APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/outputs"
-      - "$PWD/workspace/repositories:$APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/repositories"
+      # - "$PWD/workspace/repositories:$APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/repositories"
       - "$PWD/workspace/textual_inversion:$APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/textual_inversion"
     deploy:
       resources:
