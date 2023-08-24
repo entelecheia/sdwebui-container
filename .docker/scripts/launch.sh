@@ -12,6 +12,7 @@ install_dir=${APP_INSTALL_ROOT:-"/app"}
 clone_dir=${APP_CLONE_DIRNAME:-"stable-diffusion-webui"}
 source_repo=${APP_SOURCE_REPO:-"AUTOMATIC1111/stable-diffusion-webui"}
 source_branch=${APP_SOURCE_BRANCH:-"master"}
+username=${USERNAME:-"app"}
 
 # Commandline arguments for webui.py, for example: export COMMANDLINE_ARGS="--medvram --opt-split-attention"
 export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --data-dir ./workspace"
@@ -129,6 +130,11 @@ else
         exit 1
     }
 fi
+
+printf "\n%s\n" "${delimiter}"
+printf "Fix permissions"
+printf "\n%s\n" "${delimiter}"
+sudo chown -R "${username}":"${username}" "${install_dir}/${clone_dir}/workspace"
 
 # Try using TCMalloc on Linux
 prepare_tcmalloc() {
