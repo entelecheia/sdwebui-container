@@ -113,14 +113,21 @@ cd "${install_dir}"/"${clone_dir}"/ || {
     printf "\e[1m\e[31mERROR: Can't cd to %s/%s/, aborting...\e[0m" "${install_dir}" "${clone_dir}"
     exit 1
 }
-printf "\n%s\n" "${delimiter}"
-printf "Check out %s branch" "${source_branch}"
-printf "\n%s\n" "${delimiter}"
-"${GIT}" fetch --all
-"${GIT}" checkout "${source_branch}" || {
-    printf "\e[1m\e[31mERROR: Can't checkout %s branch, aborting...\e[0m" "${source_branch}"
-    exit 1
-}
+if [[ "${source_branch} " == " master " ]] || [[ "${source_branch} " == " main " ]]; then
+    printf "\n%s\n" "${delimiter}"
+    printf "Pull latest changes from %s branch" "${source_branch}"
+    printf "\n%s\n" "${delimiter}"
+    "${GIT}" pull
+else
+    printf "\n%s\n" "${delimiter}"
+    printf "Fetch all branches"
+    printf "\n%s\n" "${delimiter}"
+    "${GIT}" fetch --all
+    "${GIT}" checkout "${source_branch}" || {
+        printf "\e[1m\e[31mERROR: Can't checkout %s branch, aborting...\e[0m" "${source_branch}"
+        exit 1
+    }
+fi
 
 # Copy webui.py to the stable-diffusion directory
 printf "\n%s\n" "${delimiter}"
