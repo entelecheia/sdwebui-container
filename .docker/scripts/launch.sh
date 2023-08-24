@@ -14,7 +14,8 @@ source_repo=${APP_SOURCE_REPO:-"AUTOMATIC1111/stable-diffusion-webui"}
 source_branch=${APP_SOURCE_BRANCH:-"master"}
 
 # Commandline arguments for webui.py, for example: export COMMANDLINE_ARGS="--medvram --opt-split-attention"
-export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --xformers --data-dir ./workspace"
+export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --data-dir ./workspace"
+# export COMMANDLINE_ARGS="--share --listen --enable-insecure-extension-access --xformers --data-dir ./workspace"
 # python3 executable
 python_cmd="python3"
 # git executable
@@ -128,14 +129,6 @@ else
         exit 1
     }
 fi
-
-# Copy webui.py to the stable-diffusion directory
-printf "\n%s\n" "${delimiter}"
-printf "Copy webui.py to the stable-diffusion-webui directory"
-cp -rf "${install_dir}/scripts/webui.py" "${install_dir}"/"${clone_dir}/" || {
-    printf "\e[1m\e[31mERROR: Can't copy webui.py to the stable-diffusion-webui directory, aborting...\e[0m"
-    exit 1
-}
 
 # Try using TCMalloc on Linux
 prepare_tcmalloc() {
